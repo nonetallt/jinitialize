@@ -10,7 +10,7 @@ $app = new JinitializeApplication(__DIR__);
 /* Register vendor plugins */
 $app->registerPlugins(__DIR__.'/boostrap/cache/plugins.php');
 
-/* Register local comamnds and procedures */
+/* Register local commands and procedures */
 $app->getContainer()->addPlugin('core');
 $app->registerCommands('core', []);
 $app->registerProcedures('core', [], __DIR__.'/procedures');
