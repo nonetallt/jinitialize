@@ -1,6 +1,7 @@
 {
     "name": "nonetallt/jinitialize",
     "description": "Modular and extensible automation scripts in php.",
+    "keywords": ["automation", "scripts", "project", "setup", "jinitialize", "modular", "extensible"],
     "type": "project",
     "require": {
         "php": ">=7.0.0",
