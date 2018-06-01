@@ -28,7 +28,7 @@ Procedures are series of commands defined in json format. They can be executed s
         "commands": [
             "project:create",
             "project:folder newFolder"
-        ];
+        ]
     }
 }
 ```
