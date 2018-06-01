@@ -1,5 +1,18 @@
-# jinitialize
-Modular and extensible automation scripts in php. Based on [Symfony\Console](https://symfony.com/doc/current/components/console.html) component. This package was mainly created to allow php programmers to create robust setup scripts for their projects that can be ran almost anywhere given the wide spread of php installations on web servers.
+# Jinitialize
+
+Modular and extensible automation scripts in php. Based on [Symfony\Console](https://symfony.com/doc/current/components/console.html) component. This package was mainly created to allow php programmers to create robust setup scripts for their projects that can be ran almost anywhere given the wide spread of php installations on web servers. 
+
+# Introduction
+
+As the number of tools you use for your projects increases, so does the time required to set everything up. These tasks include but are not limited to:
+* Setting up version control
+* Setting up your testing tools
+* Setting up compilers (javascript with babel etc.)
+* Setting up automation scripts (watching file changes and running tests etc.)
+* Setting up local site to try out your web application
+* Setting up configuration for your favorite packages and libraries
+
+Even though more simplistic scripts can be used in even wider variety of environments, some of these tasks quickly become messy and lead to project specific installation scripts and duplicated code. Because of these reasons, it seems ideal to break down the complex setup scripts to more modular, reusable components.
 
 # Installation
 ```
@@ -31,6 +44,45 @@ Procedures are series of commands defined in json format. They can be executed s
         ]
     }
 }
+```
+
+Example procedure for creating a php library package using three plugins; project, git and shell.
+```json
+{
+    "php-package": {
+        "description": "Create a new generic php package.",
+        "commands": [ 
+            "project:create",
+            "project:folder src",
+            "project:folder tests",
+            "project:folder tests/Unit",
+            "project:folder tests/Feature",
+            "project:folder tests/Traits",
+            "project:folder tests/output",
+            "project:copy phpunit.xml",
+            "project:copy-stub composer.stub",
+            "git:init",
+            "git:create-upstream-github",
+            "git:ignore tags",
+            "git:ignore vendor",
+            "git:ignore tests/output",
+            "shell:\"ctags -R --fields=+laimS --languages=php --exclude=.git\""
+        ]
+    }
+}
+```
+
+# Settings
+This project uses the [dotenv](https://github.com/vlucas/phpdotenv) library to easily load user defined options. Create a file called .env in the project root directory or create one from the .env.example file:
+
+```
+cp .env.example .env
+```
+
+Jinitialize plugins can request default options for your convenience. A project plugin could for example request you to define **DEFAULT_PROJECTS_FOLDER** to suggest a reasonable default path when creating new projects. This way you don't have to type the full path each time.
+
+```
+DEFAULT_PROJECTS_FOLDER=/home/nonetallt/Code/packages
 ```
 
 # Installing plugins
