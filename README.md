@@ -1,6 +1,6 @@
 # Jinitialize
 
-Modular and extensible automation scripts in php. Based on [Symfony\Console](https://symfony.com/doc/current/components/console.html) component. This package was mainly created to allow php programmers to create robust setup scripts for their projects that can be ran almost anywhere given the wide spread of php installations on web servers. 
+Modular and extensible automation scripts in php. Based on [Symfony\Console](https://symfony.com/doc/current/components/console.html) component. This package was created to allow php programmers to create robust setup scripts for their projects that can be ran almost anywhere given the wide spread of php installations on web servers. 
 
 # Introduction
 
@@ -12,7 +12,7 @@ As the number of tools you use for your projects increases, so does the time req
 * Setting up local site to try out your web application
 * Setting up configuration for your favorite packages and libraries
 
-Even though more simplistic scripts can be used in even wider variety of environments, some of these tasks quickly become messy and lead to project specific installation scripts and duplicated code. Because of these reasons, it seems ideal to break down the complex setup scripts to more modular, reusable components.
+Even though more simplistic scripts can be used in even wider variety of environments, some of these tasks quickly become messy and lead to project specific installation scripts and duplicated code. Because of these reasons, it is ideal to break down the complex setup scripts into more modular, reusable components.
 
 # Installation
 ```
