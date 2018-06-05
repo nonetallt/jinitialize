@@ -3,6 +3,7 @@
     "description": "Modular and extensible automation scripts in php.",
     "keywords": ["automation", "scripts", "project", "setup", "jinitialize", "modular", "extensible"],
     "type": "project",
+    "prefer-stable": true,
     "require": {
         "php": ">=7.0.0",
         "nonetallt/jinitialize-core": "dev-master"

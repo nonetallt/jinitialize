@@ -8,11 +8,11 @@ use Nonetallt\Jinitialize\JinitializeApplication;
 $app = new JinitializeApplication(__DIR__);
 
 /* Register vendor plugins */
-$app->registerPlugins(__DIR__.'/boostrap/cache/plugins.php');
+$app->registerPlugins(__DIR__.'/vendor/nonetallt/jinitialize-core/bootstrap/cache/plugins.php');
 
 /* Register local commands and procedures */
-$app->getContainer()->addPlugin('core');
-$app->registerCommands('core', []);
-$app->registerProcedures('core', [], __DIR__.'/procedures');
+$app->getContainer()->addPlugin('local');
+$app->registerCommands('local', []);
+$app->registerProcedures('local', [], __DIR__.'/procedures');
 
 $app->run();
