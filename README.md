@@ -46,27 +46,30 @@ Procedures are series of commands defined in json format. They can be executed s
 }
 ```
 
-Example procedure for creating a php library package using three plugins; project, git and shell.
+Example procedure for creating a php library package using three plugins; project, git and github.
 ```json
 {
     "php-package": {
         "description": "Create a new generic php package.",
         "commands": [ 
-            "project:create",
+            "project:create --path=[PACKAGES_DIRECTORY]",
             "project:folder src",
             "project:folder tests",
             "project:folder tests/Unit",
             "project:folder tests/Feature",
-            "project:folder tests/Traits",
+            "project:folder tests/input",
+            "project:folder tests/expected",
             "project:folder tests/output",
             "project:copy [STUBS_FOLDER]/phpunit.xml",
-            "project:copy-stub [STUBS_FOLDER]/composer.stub [project:projectRoot]/composer.json",
-            "git:init",
-            "git:create-upstream-github",
-            "git:ignore tags",
-            "git:ignore vendor",
+            "project:copy [STUBS_FOLDER]/composer.stub composer.json --env",
+            "git:init [project:projectRoot]",
+            "github:create-repository",
+            "github:add-service-packagist [USERNAME] [PACKAGIST_TOKEN]",
+            "git set-upstream [github:repositoryUrl]",
+            "git:ignore tags/",
+            "git:ignore vendor/",
             "git:ignore tests/output",
-            "shell:\"ctags -R --fields=+laimS --languages=php --exclude=.git\""
+            "core:shell \"ctags -R --fields=+laimS --languages=php --exclude=.git\""
         ]
     }
 }
