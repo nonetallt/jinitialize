@@ -82,6 +82,8 @@ This project uses the [dotenv](https://github.com/vlucas/phpdotenv) library to e
 cp .env.example .env
 ```
 
+* **JINITIALIZE_PLACEHOLDER_FORMAT**, the format used for replacing placeholder values in procedures, default: [$]
+
 Jinitialize plugins can request default options for your convenience. A project plugin could for example request you to define **DEFAULT_PROJECTS_FOLDER** to suggest a reasonable default path when creating new projects. This way you don't have to type the full path each time.
 
 ```
