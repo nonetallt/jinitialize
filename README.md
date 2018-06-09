@@ -1,6 +1,11 @@
 # Jinitialize
 
-Modular and extensible automation scripts in php. Based on [Symfony\Console](https://symfony.com/doc/current/components/console.html) component. This package was created to allow php programmers to create robust setup scripts for their projects that can be ran almost anywhere given the wide spread of php installations on web servers. 
+Modular and extensible automation scripts in php. Based on [Symfony\Console](https://symfony.com/doc/current/components/console.html) component. This package was created to allow php programmers to create robust setup scripts for their projects that can be ran almost anywhere given the wide spread of php installations.
+
+```
+php jinitialize php-package
+```
+![php-package procedure script](https://i.imgur.com/2ywPHbh.png)
 
 # Introduction
 
@@ -49,7 +54,7 @@ Procedures are series of commands defined in json format. They can be executed s
 Example procedure for creating a php library package using three plugins; project, git and github.
 ```json
 {
-    "php-package": {
+"php-package": {
         "description": "Create a new generic php package.",
         "commands": [ 
             "project:create --path=[PACKAGES_DIRECTORY]",
@@ -60,18 +65,19 @@ Example procedure for creating a php library package using three plugins; projec
             "project:folder tests/input",
             "project:folder tests/expected",
             "project:folder tests/output",
-            "project:copy [STUBS_FOLDER]/phpunit.xml",
-            "project:copy [STUBS_FOLDER]/composer.stub composer.json --env",
-            "git:init [project:projectRoot]",
-            "github:create-repository",
-            "github:add-service-packagist [USERNAME] [PACKAGIST_TOKEN]",
-            "git set-upstream [github:repositoryUrl]",
+            "project:copy [STUBS_FOLDER]/phpunit.xml phpunit.xml",
+            "project:copy [STUBS_FOLDER]/composer.stub.json composer.json --env --exported",
+            "git:init [project:path]",
+            "github:authenticate [GIT_USER] [GIT_PASSWORD]",
+            "github:create-repository [project:name] --private",
+            "github:create-webhook [project:name] --name=packagist",
+            "git:set-remote [github:ssh_url]",
             "git:ignore tags/",
             "git:ignore vendor/",
             "git:ignore tests/output",
-            "core:shell \"ctags -R --fields=+laimS --languages=php --exclude=.git\""
+            "core:shell 'ctags -f [project:path]/tags -R --fields=+laimS --languages=php --exclude=.git'"
         ]
-    }
+    },
 }
 ```
 
@@ -81,6 +87,8 @@ This project uses the [dotenv](https://github.com/vlucas/phpdotenv) library to e
 ```
 cp .env.example .env
 ```
+
+* **JINITIALIZE_PLACEHOLDER_FORMAT**, the format used for replacing placeholder values in procedures, default: [$]
 
 Jinitialize plugins can request default options for your convenience. A project plugin could for example request you to define **DEFAULT_PROJECTS_FOLDER** to suggest a reasonable default path when creating new projects. This way you don't have to type the full path each time.
 
