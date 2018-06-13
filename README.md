@@ -96,7 +96,12 @@ Jinitialize plugins can request default options for your convenience. A project 
 DEFAULT_PROJECTS_FOLDER=/home/nonetallt/Code/packages
 ```
 
-# Installing plugins
+# Plugins
+
+### List of plugins
+![list of plugins: https://nonetallt.com/jinitialize/plugins](https://nonetallt.com/jinitialize/plugins/image)
+
+### Installing plugins
 Any packages that you require in your jinitialize project that define the "jinitialize-plugin" section in their extra section will be autopublished to bootstrap/cache/plugins.php. Installing a new plugin for your project is as simple as requiring it:
 
 ```
@@ -110,5 +115,5 @@ composer search jinitialize-plugin-
 php jinitialize core:search-plugins
 ```
 
-# Creating your own plugins
+### Creating your own plugins
 Check out the [jinitialize-plugin](https://github.com/nonetallt/jinitialize-plugin) boilerplate project  for more information on how to create your own plugin packages.
